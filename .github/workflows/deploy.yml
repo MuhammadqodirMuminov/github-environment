@@ -8,8 +8,8 @@ env:
   MONGODB_DB_NAME: test
   PORT: 3000
   MONGODB_CLUSTER_ADDRESS: cluster1.dlcb06m.mongodb.net
-  MONGODB_USERNAME: muhammadqodir
-  MONGODB_PASSWORD: muhammadqodir
+  MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+  MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
 jobs:
   test:
     environment: testing
@@ -20,7 +20,7 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
-          path: | 
+          path: |
             ~/.npm
             ./node_modules
           key: ${{runner.os}}-npm-${{ hashFiles('**/package-lock.json') }}
@@ -37,5 +37,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
-          echo "..."
+        run: |
+          echo "${{secrets.MONGODB_USERNAME}}"
