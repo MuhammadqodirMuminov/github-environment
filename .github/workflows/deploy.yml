@@ -16,6 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: node:18-alpine
+    services:
+      mongodb:
+        image: mongo
+        env:
+          MONGODB_CLUSTER_ADDRESS: cluster1.dlcb06m.mongodb.net
+          MONGODB_USERNAME: muhammadqodir
+          MONGODB_PASSWORD: muhammadqodir
+          MONGODB_DB_NAME: test
+          PORT: 3000
     steps:
       - name: Get Code
         uses: actions/checkout@v3
